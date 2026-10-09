@@ -128,6 +128,7 @@ export function AboutPage() {
               <p className="text-muted leading-relaxed">
                 To be a trusted partner in Indian agriculture by developing hybrid seed
                 varieties that combine innovation, quality, and practical value for
+                farming communities across the country.
               </p>
               <p className="mt-2 text-xs text-accent-700 italic">
                 [This vision statement is proposed and can be edited by the company.]

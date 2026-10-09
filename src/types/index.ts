@@ -111,7 +111,7 @@ export interface BusinessSettings {
   address: string;
   gst: string;
   domain: string;
-  upiId: string;
+  upiId: string | null;
   catalogueUrl: string | null;
   catalogueAvailable: boolean;
   whatsappDefaultMessage: string;

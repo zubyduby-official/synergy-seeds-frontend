@@ -1,14 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  QrCode,
-  MessageCircle,
-  Clock,
-  AlertCircle,
-  Copy,
-  Check,
-  Package,
-  ArrowRight,
-} from 'lucide-react';
+import { QrCode, MessageCircle, Clock, AlertCircle, Copy, Check, Package, ArrowRight } from 'lucide-react';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { EmptyState } from '@/components/States';
 import { businessSettings } from '@/config/business';
@@ -46,8 +38,11 @@ export function PaymentPage({ order }: PaymentPageProps) {
   const whatsappLink = buildWhatsAppPaymentLink(order.orderId, order.total);
   const hasUnpriced = order.items.some((i) => i.price === null);
 
+  const upiId = businessSettings.upiId;
+
   const copyUpiId = () => {
-    navigator.clipboard.writeText(businessSettings.upiId);
+    if (!upiId) return;
+    navigator.clipboard.writeText(upiId);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -103,6 +98,7 @@ export function PaymentPage({ order }: PaymentPageProps) {
               Complete your payment using any UPI app, then share the screenshot on WhatsApp.
             </p>
 
+            {upiId ? (
             <div className="grid gap-6 sm:grid-cols-[200px_1fr]">
               {/* QR placeholder */}
               <div className="flex flex-col items-center">
@@ -146,7 +142,7 @@ export function PaymentPage({ order }: PaymentPageProps) {
                   </p>
                   <div className="flex items-center gap-2">
                     <code className="rounded-lg bg-botanical px-3 py-2 text-sm font-medium text-forest-700">
-                      {businessSettings.upiId}
+                      {upiId}
                     </code>
                     <button
                       onClick={copyUpiId}
@@ -173,8 +169,18 @@ export function PaymentPage({ order }: PaymentPageProps) {
                 </div>
               </div>
             </div>
+            ) : (
+            <div className="rounded-lg bg-accent-50 px-4 py-6 text-center">
+              <AlertCircle className="mx-auto mb-3 h-8 w-8 text-accent-600" />
+              <p className="text-sm font-medium text-accent-700">UPI payment details pending</p>
+              <p className="mt-1 text-xs text-accent-700/80 leading-relaxed">
+                Our UPI ID and QR code will be displayed here once officially provided.
+                Please contact us on WhatsApp to arrange payment for this order.
+              </p>
+            </div>
+            )}
 
-            {/* Steps */}
+            {upiId && (
             <div className="mt-6 rounded-lg bg-botanical p-4">
               <h3 className="font-display text-sm font-bold text-forest-700 mb-3">
                 How to complete your payment
@@ -202,6 +208,7 @@ export function PaymentPage({ order }: PaymentPageProps) {
                 </li>
               </ol>
             </div>
+            )}
 
             {/* WhatsApp button */}
             <div className="mt-6">
@@ -276,4 +283,3 @@ export function PaymentPage({ order }: PaymentPageProps) {
   );
 }
 
-import { useState } from 'react';

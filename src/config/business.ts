@@ -12,7 +12,7 @@ export const businessSettings: BusinessSettings = {
     'OFFICE NO 203, 2nd Floor, Shell Tower, Sapna Sangeeta, Indore, Madhya Pradesh, India.',
   gst: '23ABHCS2885A1ZI',
   domain: 'www.synergyseeds.in',
-  upiId: 'synergyseeds@upi',
+  upiId: null,
   catalogueUrl: null,
   catalogueAvailable: false,
   whatsappDefaultMessage:

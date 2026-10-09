@@ -8,6 +8,7 @@ import type {
   ContactFormData,
 } from '@/types';
 import { businessSettings } from '@/config/business';
+import { products as allProducts } from '@/data/products';
 
 /**
  * API service abstraction layer.
@@ -31,10 +32,9 @@ export interface ProductListResponse {
 }
 
 export async function fetchProducts(): Promise<ProductListResponse> {
-  const { products } = await import('@/data/products');
   return delay({
-    products,
-    total: products.length,
+    products: allProducts,
+    total: allProducts.length,
     source: 'mock',
   });
 }

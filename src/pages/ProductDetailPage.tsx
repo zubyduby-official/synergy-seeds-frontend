@@ -5,9 +5,6 @@ import {
   ShoppingCart,
   MessageCircle,
   Phone,
-  Minus,
-  Plus,
-  CheckCircle2,
   Lock,
   Info,
 } from 'lucide-react';

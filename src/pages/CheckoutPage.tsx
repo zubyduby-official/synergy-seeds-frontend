@@ -6,7 +6,6 @@ import { EmptyState } from '@/components/States';
 import { ProductImage } from '@/components/ProductImage';
 import { useCart } from '@/context/CartContext';
 import { businessSettings } from '@/config/business';
-import { categoryName } from '@/data/categories';
 import { submitOrder } from '@/services/api';
 import type { CheckoutData, OrderSummary } from '@/types';
 

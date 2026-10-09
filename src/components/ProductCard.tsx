@@ -6,7 +6,6 @@ import { PriceDisplay } from '@/components/PriceDisplay';
 import { categoryName } from '@/data/categories';
 import { useCart } from '@/context/CartContext';
 import { getAllPackSizes } from '@/data/products';
-import { buildWhatsAppEnquiryLink } from '@/services/api';
 
 interface ProductCardProps {
   product: Product;

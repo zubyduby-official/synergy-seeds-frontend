@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer, useCallback, type ReactNode } from 'react';
 import type { CartItemData, Product, PackSize } from '@/types';
-import { getAllPackSizes } from '@/data/products';
 
 interface CartState {
   items: CartItemData[];
@@ -145,4 +144,3 @@ export function useCart() {
   return ctx;
 }
 
-export { getAllPackSizes };
