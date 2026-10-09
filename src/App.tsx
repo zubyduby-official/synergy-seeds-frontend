@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from '@/context/CartContext';
 import { Layout } from '@/components/Layout';
 import { HomePage } from '@/pages/HomePage';
@@ -9,6 +9,15 @@ import { ProductDetailPage } from '@/pages/ProductDetailPage';
 import { CartPage } from '@/pages/CartPage';
 import { CheckoutPage } from '@/pages/CheckoutPage';
 import { PaymentPage } from '@/pages/PaymentPage';
+import { DealerEnquiryPage } from '@/pages/DealerEnquiryPage';
+import { ContactPage } from '@/pages/ContactPage';
+import { CataloguePage } from '@/pages/CataloguePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
+import { PrivacyPolicyPage } from '@/pages/policies/PrivacyPolicyPage';
+import { TermsConditionsPage } from '@/pages/policies/TermsConditionsPage';
+import { ShippingPolicyPage } from '@/pages/policies/ShippingPolicyPage';
+import { ReturnRefundPolicyPage } from '@/pages/policies/ReturnRefundPolicyPage';
+import { CancellationPolicyPage } from '@/pages/policies/CancellationPolicyPage';
 import type { Product, OrderSummary } from '@/types';
 
 export default function App() {
@@ -62,7 +71,15 @@ export default function App() {
               element={<CheckoutPage onOrderCreated={handleOrderCreated} />}
             />
             <Route path="/payment" element={<PaymentPage order={orderSummary} />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/dealer-enquiry" element={<DealerEnquiryPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/catalogue" element={<CataloguePage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+            <Route path="/shipping-policy" element={<ShippingPolicyPage />} />
+            <Route path="/return-refund-policy" element={<ReturnRefundPolicyPage />} />
+            <Route path="/cancellation-policy" element={<CancellationPolicyPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </CartProvider>
