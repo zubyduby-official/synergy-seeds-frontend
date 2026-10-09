@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-forest-500/20 text-forest-900;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-forest-500;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 ease-smooth disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest-500 text-white px-5 py-2.5 hover:bg-forest-600 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn bg-leaf-400 text-white px-5 py-2.5 hover:bg-leaf-500 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply btn border border-forest-200 bg-white text-forest-700 px-5 py-2.5 hover:border-forest-400 hover:bg-botanical active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn text-forest-700 px-4 py-2 hover:bg-botanical;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-400 text-forest-900 px-5 py-2.5 hover:bg-accent-300 font-semibold active:scale-[0.98];
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-forest-100/60 shadow-soft;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-forest-200 bg-white px-4 py-2.5 text-charcoal placeholder:text-muted/60 transition-colors focus:border-forest-400 focus:outline-none focus:ring-2 focus:ring-forest-400/20;
+  }
+
+  .label-field {
+    @apply block text-sm font-medium text-charcoal mb-1.5;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .section-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-widest text-leaf-600;
+  }
+
+  .prose-clean p {
+    @apply text-muted leading-[1.7];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
